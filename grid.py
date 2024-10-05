@@ -31,6 +31,11 @@ class Grid:
             return True
         return False
 
+    def is_empty(self, row, col):
+        if(self.grid[row][col] == 0):
+            return True
+        return False
+        
 
 
 
