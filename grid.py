@@ -64,6 +64,12 @@ class Grid:
             elif completed > 0: #if completed is greater than 0 and current row is not completed, move it down
                 self.move_row_down(row, completed)
         return completed
+    
+    def reset(self):
+        for x in range(self.num_rows):
+            for y in range(self.num_col):
+                self.grid[x][y] = 0
+
 
 
 

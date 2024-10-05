@@ -8,6 +8,7 @@ class Game:
         self.blocks = [IBlock(), JBlock(), LBlock(), OBlock(), SBlock(), TBlock(), ZBlock()]
         self.current_block = self.get_random_block()
         self.next_block = self.get_random_block()
+        self.game_over = False
     #will choose random block and delete it from list, ensuring we use all blocks before repeating cycle
     def get_random_block(self):
         if len(self.blocks) == 0:
@@ -66,14 +67,22 @@ class Game:
         self.current_block = self.next_block
         self.next_block = self.get_random_block()
         self.grid.clear_full_rows()
-
+        if self.block_fits() == False: #game over
+            self.game_over = True
+        
     #returns false if block collides with another block
     def block_fits(self):
         tiles = self.current_block.get_cell_positions()
-        for tiles in tiles:
-            if self.grid.is_empty(tiles.row, tiles.col) == False:
+        for tile in tiles:
+            if self.grid.is_empty(tile.row, tile.col) == False:
                 return False
         return True
+    
+    def reset(self):
+        self.grid.reset()
+        self.blocks = [IBlock(), JBlock(), LBlock(), OBlock(), SBlock(), TBlock(), ZBlock()]
+        self.current_block = self.get_random_block()
+        self.next_block = self.get_random_block()
 
 
 

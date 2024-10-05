@@ -12,7 +12,7 @@ clock = pygame.time.Clock() #will account for refresh rate
 game = Game()
 
 GAME_UPDATE = pygame.USEREVENT
-pygame.time.set_timer(GAME_UPDATE, 200) #will trigger game_update event every 200 milliseconds
+pygame.time.set_timer(GAME_UPDATE, 20) #will trigger game_update event every 200 milliseconds
 while True:
     for event in pygame.event.get(): 
         #loops until we close the window
@@ -22,16 +22,19 @@ while True:
 
     #runs if arrow keys are hit
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT: 
+            if game.game_over == True:
+                game.game_over = False
+                game.reset()
+            if event.key == pygame.K_LEFT and game.game_over == False: 
                 game.move_left()
-            if event.key == pygame.K_RIGHT:
+            if event.key == pygame.K_RIGHT and game.game_over == False:
                 game.move_right()
-            if event.key == pygame.K_DOWN:
+            if event.key == pygame.K_DOWN and game.game_over == False:
                 game.move_down()
-            if event.key == pygame.K_UP:
+            if event.key == pygame.K_UP and game.game_over == False:
                 game.rotate()
 
-        if event.type == GAME_UPDATE: #every 200 ms the block will move down
+        if event.type == GAME_UPDATE and game.game_over == False: #every 200 ms the block will move down
             game.move_down()
     
     #draws on the window
