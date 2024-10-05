@@ -1,17 +1,15 @@
 import pygame, sys
-from grid import Grid
-from blocks import *
+from game import Game
 
 pygame.init()  
 dark_blue = (44, 44, 127)
 
-screen = pygame.display.set_mode((300,600))
+screen = pygame.display.set_mode((300,600)) #sets border size for window
 pygame.display.set_caption("Tetris")
 
-clock = pygame.time.Clock()
+clock = pygame.time.Clock() #will account for refresh rate
 
-game_grid = Grid()
-block = OBlock()
+game = Game()
 
 while True:
     for event in pygame.event.get(): 
@@ -21,8 +19,7 @@ while True:
             sys.exit()
     
     screen.fill(dark_blue)
-    game_grid.draw(screen)
-    block.draw(screen)
+    game.draw(screen)
 
     pygame.display.update()
     
