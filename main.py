@@ -12,11 +12,8 @@ clock = pygame.time.Clock()
 game_grid = Grid()
 game_grid.printGrid()
 
-game_grid.grid[0][0] = 1
-game_grid.grid[3][5] = 4
-game_grid.grid[17][8] = 7
 while True:
-    for event in pygame.event.get():
+    for event in pygame.event.get(): 
         #loops until we close the window
         if event.type == pygame.QUIT:
             pygame.quit()

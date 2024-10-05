@@ -27,7 +27,7 @@ class Grid:
 
         return [dark_grey, green, red, orange, yellow, purple, cyan, blue]
     
-    def draw(self, screen):
+    def draw(self, screen): 
         for row in range(self.num_rows):
             for col in range(self.num_col):
                 cell_value = self.grid[row][col]
