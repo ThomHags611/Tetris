@@ -65,6 +65,7 @@ class Game:
             self.grid.grid[position.row][position.col] = self.current_block.id #updates board array with id of object
         self.current_block = self.next_block
         self.next_block = self.get_random_block()
+        self.grid.clear_full_rows()
 
     #returns false if block collides with another block
     def block_fits(self):
