@@ -18,6 +18,7 @@ class Block:
         self.row_offset += row
         self.col_offset += col
 
+    #return array of all coordinates
     def get_cell_positions(self):
         tiles = self.cells[self.rotation_state]
         moved_tiles = []
@@ -33,3 +34,8 @@ class Block:
         for tile in tiles:
             tile_rect = pygame.Rect(tile.col * self.cell_size + 1, tile.row * self.cell_size + 1, self.cell_size - 1, self.cell_size - 1)
             pygame.draw.rect(screen, self.colors[self.id], tile_rect)
+
+    def rotate(self):
+        self.rotation_state += 1
+        if self.rotation_state == len(self.cells):
+            self.rotation_state = 0

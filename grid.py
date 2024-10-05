@@ -15,6 +15,7 @@ class Grid:
                 print(self.grid[x][y], end = " ")
             print()
 
+
     #used to fill colors array
     def draw(self, screen): 
         for row in range(self.num_rows):
@@ -23,6 +24,13 @@ class Grid:
                 #creates rectangle size and coordinate on window
                 cell_rect = pygame.Rect(col*self.cell_size + 1, row * self.cell_size + 1, self.cell_size -1, self.cell_size -1)
                 pygame.draw.rect(screen,self.colors[cell_value],cell_rect) 
+
+    #checks if given point is within grid
+    def is_inside(self, row, col):
+        if row >= 0 and row < self.num_rows and col >= 0 and col < self.num_col:
+            return True
+        return False
+
 
 
 
